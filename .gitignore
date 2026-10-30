@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+build/
+dist/
+*.egg-info/
+
+# macOS
+.DS_Store
+
+# The full checkpoint is too large for git. Get it from nesformer-weights.zip
+# or rebuild it with `python -m nesformer build`.
+weights/model.safetensors
+
+# User-supplied ROMs. Only the freely licensed test ROMs are tracked.
+roms/*.nes
+!roms/nestest.nes
+!roms/full_game.nes
+!roms/thwaite.nes
+
+# GIFs written to the top folder by `python -m nesformer run`
+/*.gif

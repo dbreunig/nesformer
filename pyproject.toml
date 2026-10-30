@@ -1,0 +1,26 @@
+[project]
+name = "nesformer"
+version = "0.1.0"
+description = "An NES CPU (6502 / 2A03) with its RAM, compiled into the weights of a stock Qwen3.5 model"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "LICENSE.chipformer"]
+dependencies = ["numpy>=1.26", "scipy>=1.11", "numba>=0.60", "pillow>=10"]
+
+[project.optional-dependencies]
+hf = ["torch>=2.6", "transformers>=5.22"]  # run the checkpoint in stock transformers (hfcheck.py)
+dev = ["pytest>=8", "py65>=1.1"]
+
+[project.scripts]
+nesformer = "nesformer.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["nesformer", "chipformer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
